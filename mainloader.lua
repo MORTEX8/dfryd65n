@@ -16,7 +16,7 @@ local request 		= request or http_request;
 local loadstring 	= loadstring;
 
 if (type(messagebox) ~= 'function') then
-	return localPlayer:Kick('[amongus.hook] missing alias ( messagebox ) - unsupported executor');
+	return localPlayer:Kick('[neverdies.me] missing alias ( messagebox ) - unsupported executor');
 end;
 
 local protectedMessagebox = function(body, title, id)
@@ -31,17 +31,17 @@ end;
 local protectedLoad = function(url)
 	local success, response = pcall(request, {Url=url; Method='GET';});
 	if (not success) then
-		protectedMessagebox(`protectedLoad failed(1) - request error\n\nurl: {url}`, `amongus.hook [{executor}]`, 48);
+		protectedMessagebox(`protectedLoad failed(1) - request error\n\nurl: {url}`, `neverdies.me [{executor}]`, 48);
 		task.wait(9e9);
 		return;
 	elseif (type(response) ~= 'table' or type(response.Body) ~= 'string' or response.StatusCode ~= 200) then
-            protectedMessagebox(`protectedLoad failed(2) - bad response\n\nurl: {url}`, `amongus.hook [{executor}]`, 48);
+            protectedMessagebox(`protectedLoad failed(2) - bad response\n\nurl: {url}`, `neverdies.me [{executor}]`, 48);
 		task.wait(9e9);
 		return;
       end;
       local loader = loadstring(response.Body);
       if (not loader) then
-            protectedMessagebox(`protectedLoad failed(3) - syntax error\n\nurl: {url}`, `amongus.hook [{executor}]`, 48);
+            protectedMessagebox(`protectedLoad failed(3) - syntax error\n\nurl: {url}`, `neverdies.me [{executor}]`, 48);
 		task.wait(9e9);
 		return;
       end;
@@ -49,15 +49,15 @@ local protectedLoad = function(url)
 end;
 
 if (type(loadstring) ~= 'function') then
-	return protectedMessagebox(`missing alias ( loadstring ) - unsupported executor`, `amongus.hook [{executor}]`, 48);
+	return protectedMessagebox(`missing alias ( loadstring ) - unsupported executor`, `neverdies.me [{executor}]`, 48);
 elseif (type(request) ~= 'function') then
-	return protectedMessagebox(`missing alias ( request ) - unsupported executor`, `amongus.hook [{executor}]`, 48);
+	return protectedMessagebox(`missing alias ( request ) - unsupported executor`, `neverdies.me [{executor}]`, 48);
 elseif (not Drawing) then
-	protectedLoad('https://raw.githubusercontent.com/mainstreamed/amongus-hook/refs/heads/main/drawingfix.lua');
+	protectedLoad('https://raw.githubusercontent.com/MORTEX8/dfryd65n/refs/heads/main/drawingfix.lua');
 end;
 	
 local placeid = game.PlaceId;
-local dir = 'https://raw.githubusercontent.com/mainstreamed/amongus-hook/main/';
+local dir = 'https://github.com/MORTEX8/dfryd65n/blob/main/';
 
 local statuslist = {};
 
@@ -74,7 +74,7 @@ statuslist.tridentsurvival = {
 
 local load = function(name)
 	local game = statuslist[name];
-	if (game.status ~= 'Undetected' and protectedMessagebox(`{game.name} is Currently Marked as {game.status}!\n\nAre You Sure You Want to Continue?`, `amongus.hook`, 52) ~= 6) then
+	if (game.status ~= 'Undetected' and protectedMessagebox(`{game.name} is Currently Marked as {game.status}!\n\nAre You Sure You Want to Continue?`, `neverdies.me`, 52) ~= 6) then
 		return;
 	elseif (
 		game.support and 
@@ -91,4 +91,4 @@ if (placeid == 13253735473) then
 elseif (placeid == 13800717766 or placeid == 15479377118 or placeid == 16849012343) then
     return load('fallensurvival');
 end;
-protectedMessagebox(`This Game is Unsupported!\n\nIf you believe this is incorrect, please open a ticket in our discord! - discord.gg/2jycAcKvdw`, `amongus.hook [{placeid}]`, 48);
+protectedMessagebox(`This Game is Unsupported!\n\nIf you believe this is incorrect, please open a ticket in our discord! - dsc.gg/neverdies`, `neverdies.me [{placeid}]`, 48);
